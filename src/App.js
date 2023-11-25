@@ -3,8 +3,10 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import PostForm from "./components/PostForm";
 import PostList from "./components/PostList";
 import Img from "./assets/gratitude.jpg";
+import { useDispatch } from "react-redux";
 
 export default function App() {
+  const dispatch = useDispatch();
   return (
     <div>
       <div className="bg-white shadow mb-8">
