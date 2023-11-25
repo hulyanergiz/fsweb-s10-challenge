@@ -9,7 +9,8 @@ import { legacy_createStore as createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const store = createStore(
   reducer,
   composeWithDevTools(applyMiddleware(logger, thunk))
@@ -21,6 +22,12 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <>
+        <ToastContainer
+          autoClose={3000}
+          position="bottom-center"
+          closeOnClick
+          rtl={true}
+        />
         <App />
       </>
     </BrowserRouter>

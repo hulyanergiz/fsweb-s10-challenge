@@ -3,13 +3,29 @@ import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
 import { useDispatch } from "react-redux";
 import { notSilAPI } from "../actions";
+import { toast } from "react-toastify";
 
 export default function Post({ item }) {
   const dispatch = useDispatch();
   function handleSil() {
-    dispatch(notSilAPI(item.id));
-    // burada ilgili eylemi dispatch edin
-    // sonra toast mesajı gösterin
+    const loadingToast = toast.loading("Notunuz siliniyor");
+    function notSilToast(success) {
+      if (success) {
+        toast.update(loadingToast, {
+          render: "Notunuz silindi",
+          type: "success",
+          isLoading: false,
+          autoClose: 2000,
+        });
+      } else {
+        toast.update(loadingToast, {
+          render: "Notunuz silinemedi",
+          type: "error",
+          isLoading: false,
+        });
+      }
+    }
+    dispatch(notSilAPI(item.id, notSilToast));
   }
 
   return (
