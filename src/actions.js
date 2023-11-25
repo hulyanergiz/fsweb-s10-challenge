@@ -4,6 +4,7 @@ export const NOT_EKLE = "NOT_EKLE";
 export const NOT_SIL = "NOT_SIL";
 export const FETCH_LOADING = "FETCH_LOADING";
 export const FETCH_ERROR = "FETCH_ERROR";
+export const GET_INITIAL_STATE = "GET_INITIAL_STATE";
 export function notEkle(not) {
   // ...
   return { type: NOT_EKLE, payload: not };
@@ -18,6 +19,9 @@ export function fetchLoading() {
 }
 export function fetchError() {
   return { type: FETCH_ERROR };
+}
+export function getInitialState() {
+  return { type: GET_INITIAL_STATE };
 }
 export const notEkleAPI = (yeniNot, notEkleToast) => (dispatch) => {
   dispatch(fetchLoading());

@@ -1,4 +1,10 @@
-import { FETCH_ERROR, FETCH_LOADING, NOT_EKLE, NOT_SIL } from "./actions";
+import {
+  FETCH_ERROR,
+  FETCH_LOADING,
+  GET_INITIAL_STATE,
+  NOT_EKLE,
+  NOT_SIL,
+} from "./actions";
 
 const s10chLocalStorageKey = "s10ch";
 
@@ -57,6 +63,9 @@ export const reducer = (state = baslangicDegerleri, action) => {
       return { ...state, loading: true, error: false };
     case FETCH_ERROR:
       return { ...state, loading: false, error: true };
+    case GET_INITIAL_STATE:
+      const initialState = baslangicNotlariniGetir(s10chLocalStorageKey);
+      return initialState;
     default:
       return state;
   }
